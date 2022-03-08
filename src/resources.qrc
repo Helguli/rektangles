@@ -1,0 +1,12 @@
+<!--
+    SPDX-License-Identifier: CC0-1.0
+    SPDX-FileCopyrightText: 2021 Helguli <helguli@yahoo.com>
+-->
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">contents/ui/main.qml</file>
+        <file alias="PuzzleCell.qml">contents/ui/PuzzleCell.qml</file>
+        <file alias="PuzzleGroup.qml">contents/ui/PuzzleGroup.qml</file>
+        <file alias="GameTable.qml">contents/ui/GameTable.qml</file>
+    </qresource>
+</RCC>
