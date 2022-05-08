@@ -1,3 +1,8 @@
+/*
+    SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2021 Helguli <helguli@yahoo.com>
+*/
+
 #pragma once
 
 #include <vector>
