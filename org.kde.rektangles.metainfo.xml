@@ -8,15 +8,15 @@
   <name>Rektangles</name>
   <summary>Logic puzzle game</summary>
   <metadata_license>A permissive license for this metadata, e.g. "FSFAP" + Update the SPDX tags above!</metadata_license>
-  <project_license>GPL-2.0-or-later</project_license>
+  <project_license>GPL-2.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
   <developer_name>Helguli</developer_name>
   <description>
-    <p>Multiple paragraphs of long description, describing this software component.</p>
-    <p>You can also use ordered and unordered lists:</p>
-    <ul>
-      <li>Feature 1</li>
-      <li>Feature 2</li>
-    </ul>
-    <p>Keep in mind to XML-escape characters, and that this is not HTML markup.</p>
+    <p>Japanese puzzle game also known as shikaku</p>
   </description>
+  <developer_name>Helguli &lt;helguli@yahoo.com&gt;</developer_name>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>rektangles</binary>
+  </provides>
 </component>
