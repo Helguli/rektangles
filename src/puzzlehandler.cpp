@@ -236,11 +236,11 @@ bool PuzzleHandler::createNewGroup(int group_id, int empty_cells)
             deleteGroup(getNeighbouringGroupId(selected_cell[0], selected_cell[1]));
         }
     }
-    int horizontal = std::rand() % 2;
+    bool horizontal = std::rand() % 2;
     int first_available = getAvailableSpace(horizontal, selected_cell[0], selected_cell[1], 1);
     int first_selected = ((rand() % first_available) + 1) * signum(first_available);
     int second_available = getAvailableSpace(!horizontal, selected_cell[0], selected_cell[1], first_selected);
-    int max_territory = first_selected * second_available;
+    int max_territory = abs(first_selected * second_available);
     int second_selected = second_available;
     if (max_territory <= 1)
     {
@@ -291,11 +291,12 @@ void PuzzleHandler::deleteGroup(int group_id)
 
 int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_col, int width)
 {
-    int count = 0;
+    int count_positive = 0;
+    int count_negative = 0;
     int width_sign = signum(width);
     if (horizontal)
     {
-        for (int col = start_col; col < m_col_size; col++, count++)
+        for (int col = start_col; col < m_col_size; col++, count_positive++)
         {
             if (m_table[start_row][col] != 0)
             {
@@ -313,11 +314,7 @@ int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_c
             }
         }
         label_col:
-        if (count != 1)
-        {
-            return count;
-        }
-        for (int col = start_col, count = 0; col >= 0; col--, count--)
+        for (int col = start_col; col >= 0; col--, count_negative--)
         {
             if (m_table[start_row][col] != 0)
             {
@@ -329,7 +326,7 @@ int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_c
                 {
                     if (m_table[start_row + i][col] != 0)
                     {
-                        return count;
+                        goto return_statement;
                     }
                 }
             }
@@ -337,7 +334,7 @@ int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_c
     }
     else
     {
-        for (int row = start_row; row < m_row_size; row++, count++)
+        for (int row = start_row; row < m_row_size; row++, count_positive++)
         {
             if (m_table[row][start_col] != 0)
             {
@@ -355,11 +352,7 @@ int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_c
             }
         }
         label_row:
-        if (count != 1)
-        {
-            return count;
-        }
-        for (int row = start_row, count = 0; row >= 0; row--, count--)
+        for (int row = start_row; row >= 0; row--, count_negative--)
         {
             if (m_table[row][start_col] != 0)
             {
@@ -371,13 +364,14 @@ int PuzzleHandler::getAvailableSpace(bool horizontal, int start_row, int start_c
                 {
                     if (m_table[row][start_col + i] != 0)
                     {
-                        return count;
+                        goto return_statement;
                     }
                 }
             }
         }
     }
-    return count;
+    return_statement:
+    return (-count_negative < count_positive ? count_positive : count_negative);
 }
 
 bool PuzzleHandler::isIsolatedCell(int row, int col)

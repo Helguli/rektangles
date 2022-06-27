@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="rektangles.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     width="500px"
+     inkscape:lockguides="false"
+     inkscape:object-nodes="false"
+     inkscape:zoom="1.572223"
+     inkscape:cx="261.09528"
+     inkscape:cy="248.69246"
+     inkscape:window-width="1920"
+     inkscape:window-height="1007"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Réteg 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#0000ff;fill-rule:evenodd;stroke-width:0.389731;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect31"
+       width="82.682289"
+       height="82.682289"
+       x="3.3072915"
+       y="3.3072915"
+       rx="7"
+       ry="7" />
+    <rect
+       style="fill:#00ff00;fill-rule:evenodd;stroke-width:0.272548"
+       id="rect154"
+       width="39.6875"
+       height="126.33854"
+       x="89.296875"
+       y="3.3072915"
+       rx="7"
+       ry="7" />
+    <rect
+       style="fill:#ff0000;stroke-width:0.190946"
+       id="rect1037"
+       width="82.682289"
+       height="39.6875"
+       x="3.3072915"
+       y="89.296875"
+       rx="7"
+       ry="7" />
+  </g>
+</svg>

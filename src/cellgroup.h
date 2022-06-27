@@ -10,7 +10,7 @@
 #include <qqml.h>
 
 #define COLORS_SIZE 20
-#define OPACITY 123
+#define OPACITY 180
 
 class CellGroup : public QObject
 {

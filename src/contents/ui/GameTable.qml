@@ -67,9 +67,17 @@ ColumnLayout {
         anchors.fill: gametable
         hoverEnabled: false
         onPressed: {
-            m_puzzle_handler.mousePressed(gametable.childAt(mouse.x, mouse.y).indexOfThis)
+            if (gametable.childAt(mouse.x, mouse.y) != null) {
+                m_puzzle_handler.mousePressed(gametable.childAt(mouse.x, mouse.y).indexOfThis)
+            } else {
+                m_puzzle_handler.mousePressed(-1)
+            }
         }
         onReleased: {m_puzzle_handler.mouseReleased()}
-        onPositionChanged: {m_puzzle_handler.setSelectedCellId(gametable.childAt(mouse.x, mouse.y).indexOfThis)}
+        onPositionChanged: {
+            if (gametable.childAt(mouse.x, mouse.y) != null) {
+                m_puzzle_handler.setSelectedCellId(gametable.childAt(mouse.x, mouse.y).indexOfThis)
+            }
+        }
     }
 }

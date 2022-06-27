@@ -2,10 +2,10 @@
 # SPDX-FileCopyrightText: 2021 Helguli <helguli@yahoo.com>
 [Desktop Entry]
 Name=ReKtangles
-Comment=ReKtangles Kirigami Application
+Comment=Logic Puzzle Game
 Version=1.0
 Exec=rektangles
-Icon=applications-development
+Icon=rektangles
 Type=Application
 Terminal=false
 # Add an actual main category here (and possibly applicable additional ones)

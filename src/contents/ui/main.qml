@@ -98,12 +98,29 @@ Kirigami.ApplicationWindow {
                 Keys.onEnterPressed: doneButton.clicked()
                 Keys.onReturnPressed: doneButton.clicked()
                 onClicked: {
-                    m_puzzle_handler.setSize(rowSpin.value, colSpin.value)
-                    m_puzzle_handler.newPuzzle()
+                    if (rowSpin.value != m_puzzle_handler.rowSize || colSpin.value != m_puzzle_handler.colSize) {
+                        m_puzzle_handler.setSize(rowSpin.value, colSpin.value)
+                        m_puzzle_handler.newPuzzle()
+                    }
                     resizeDialog.close()
                     page.forceActiveFocus()
                 }
             }
+        }
+    }
+
+    Kirigami.OverlaySheet {
+        id: helpSheet
+        //modal: true
+        //focus: true
+        //x: (page.width - width) / 2
+        //y: page.height / 2 - height
+        header: Kirigami.Heading {
+            text: i18n("Help")
+        }
+        Kirigami.Label {
+            wrapMode: Text.WordWrap
+            text: i18n("1. Divide the grid into rectangles.\n2. Each rectangle should contain exactly one number.\n3. The number must be equal to the territory of the rectangle.")
         }
     }
 
@@ -131,7 +148,6 @@ Kirigami.ApplicationWindow {
             m_puzzle_handler.setSelectedCellId(m_puzzle_handler.selectedCellId + m_puzzle_handler.colSize)
         }
         Keys.onReturnPressed: {
-            showPassiveNotification(m_puzzle_handler.selectedCellId)
             m_puzzle_handler.returnPressed();
         }
         Keys.onEnterPressed: {
@@ -167,6 +183,15 @@ Kirigami.ApplicationWindow {
             tooltip: i18n("Resize table")
             onTriggered: {
                 resizeDialog.open();
+            }
+        }
+
+        actions.right: Kirigami.Action {
+            text: i18n("Help")
+            iconName: "help-hint"
+            tooltip: i18n("Show help")
+            onTriggered: {
+                helpSheet.open()
             }
         }
 

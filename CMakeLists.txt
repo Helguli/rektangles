@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2021 Helguli <helguli@yahoo.com>
 # SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2021 Helguli <helguli@yahoo.com>
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -26,6 +26,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Kirigami2 I18n)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 add_subdirectory(src)
+add_subdirectory(icons)
 
 install(PROGRAMS org.kde.rektangles.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.rektangles.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
