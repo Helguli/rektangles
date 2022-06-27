@@ -23,3 +23,9 @@ Unsolved puzzle
 
 Solved puzzle
 ![solved](screenshots/rektangles_solved.png)
+
+Unsolved puzzle on mobile
+![unsolved](screenshots/rektangles_mobile_unsolved.png)
+
+Solved puzzle on mobile
+![solved](screenshots/rektangles_mobile_solved.png)
