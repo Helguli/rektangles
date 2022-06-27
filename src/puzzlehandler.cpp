@@ -590,6 +590,14 @@ void PuzzleHandler::enterSelectMode()
 void PuzzleHandler::exitSelectMode()
 {
     CellGroup* g = m_cell_groups.last();
+    int row = m_selected_cell_id / m_col_size;
+    int col = m_selected_cell_id % m_col_size;
+    if (m_solved_table[row][col])
+    {
+        delete m_cell_groups.take(m_solved_table[row][col]);
+        deleteSolvedGroup(m_solved_table[row][col]);
+        emit cellGroupsChanged();
+    }
     if (validateGroup(g->startRow(), g->startCol(), g->endRow(), g->endCol()))
     {
         m_last_solved_group_id++;
