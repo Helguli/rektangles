@@ -21,8 +21,8 @@ Kirigami.ApplicationWindow {
     property int grid_spacing: 5
 
     property Rektangles.PuzzleHandler m_puzzle_handler: Rektangles.PuzzleHandler {
-        rowSize: root.isMobile ? 7 : 5
-        colSize: root.isMobile ? 5 : 7
+        rowSize: Kirigami.Settings.isMobile ? 7 : 5
+        colSize: Kirigami.Settings.isMobile ? 5 : 7
         selectedCellId: newPuzzle()
         onPuzzleFinished: {
             showPassiveNotification(i18n("You won!"))
@@ -36,7 +36,7 @@ Kirigami.ApplicationWindow {
     globalDrawer: Kirigami.GlobalDrawer {
         title: i18n("Rektangles")
         titleIcon: "applications-graphics"
-        isMenu: !root.isMobile
+        isMenu: !Kirigami.Settings.isMobile
 
         actions: [
             Kirigami.Action {
