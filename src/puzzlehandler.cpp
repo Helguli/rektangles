@@ -254,7 +254,8 @@ bool PuzzleHandler::createNewGroup(int group_id, int empty_cells)
         {
             second_selected = ((rand() % second_available) + 1) * signum(second_available);
             territory = first_selected * second_selected;
-        } while(abs(territory) <= 1 || abs(territory) > m_row_size * m_col_size / 4);
+        }
+        while(abs(territory) <= 1 || abs(territory) > m_row_size * m_col_size / 4);
     }
     assignGroup(group_id, selected_cell[0], selected_cell[1], horizontal?second_selected:first_selected, horizontal?first_selected:second_selected);
     return true;
@@ -415,7 +416,6 @@ void PuzzleHandler::degroup(int group_id, int group_count, int nth)
     {
         for (int col = 0; col < m_col_size; col++)
         {
-
             if (m_table[row][col] == group_id)
             {
                 if (count == nth)

@@ -105,10 +105,6 @@ Kirigami.ApplicationWindow {
 
     Kirigami.OverlaySheet {
         id: helpSheet
-        //modal: true
-        //focus: true
-        //x: (page.width - width) / 2
-        //y: page.height / 2 - height
         header: Kirigami.Heading {
             text: i18n("Help")
         }
