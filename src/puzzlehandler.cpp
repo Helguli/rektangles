@@ -129,7 +129,7 @@ void PuzzleHandler::setSize(int row_size, int col_size)
     setColSize(col_size);
 }
 
-void PuzzleHandler::newPuzzle()
+int PuzzleHandler::newPuzzle()
 {
     std::cout << "New puzzle" << std::endl;
     m_table.resize(m_row_size);
@@ -206,6 +206,7 @@ void PuzzleHandler::newPuzzle()
     emit puzzleStateChanged();
     emit selectedCellIdChanged();
     emit puzzleValuesChanged();
+    return m_selected_cell_id;
 
 }
 

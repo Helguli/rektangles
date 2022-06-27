@@ -46,7 +46,7 @@ public slots:
     void mouseReleased();
     int getValueAt(int index);
     void setSize(int row_size, int col_size);
-    void newPuzzle();
+    int  newPuzzle();
 signals:
     void rowSizeChanged();
     void colSizeChanged();

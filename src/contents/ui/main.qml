@@ -6,7 +6,7 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.1 as Controls
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.13 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import org.kde.rektangles 0.1 as Rektangles
 
 Kirigami.ApplicationWindow {
@@ -20,17 +20,17 @@ Kirigami.ApplicationWindow {
     property int counter: 0
     property int grid_spacing: 5
 
-    property Rektangles.PuzzleHandler m_puzzle_handler: Rektangles.PuzzleHandler{}
-    property int cell_size: {
-        Math.min((gametable.width - grid_spacing - 2 * Kirigami.Units.smallSpacing) / m_puzzle_handler.colSize - grid_spacing,
-                 (gametable.height - grid_spacing - 2 * Kirigami.Units.smallSpacing) / m_puzzle_handler.rowSize - grid_spacing)
-    }
-
-    Connections {
-        target: m_puzzle_handler
+    property Rektangles.PuzzleHandler m_puzzle_handler: Rektangles.PuzzleHandler {
+        rowSize: root.isMobile ? 7 : 5
+        colSize: root.isMobile ? 5 : 7
+        selectedCellId: newPuzzle()
         onPuzzleFinished: {
             showPassiveNotification(i18n("You won!"))
         }
+    }
+    property int cell_size: {
+        Math.min((gametable.width - grid_spacing - 2 * Kirigami.Units.smallSpacing) / m_puzzle_handler.colSize - grid_spacing,
+                 (gametable.height - grid_spacing - 2 * Kirigami.Units.smallSpacing) / m_puzzle_handler.rowSize - grid_spacing)
     }
 
     globalDrawer: Kirigami.GlobalDrawer {
@@ -41,7 +41,7 @@ Kirigami.ApplicationWindow {
         actions: [
             Kirigami.Action {
                 text: i18n("New Game")
-                icon.name: "list-add"
+                icon.name: "document-new-symbolic"
                 onTriggered: {
                     m_puzzle_handler.newPuzzle()
                 }
@@ -55,7 +55,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 text: i18n("Quit")
-                icon.name: "gtk-quit"
+                icon.name: "application-exit"
                 onTriggered: Qt.quit()
             }
 
@@ -66,13 +66,14 @@ Kirigami.ApplicationWindow {
         id: contextDrawer
     }
 
-    Controls.Dialog {
+    Kirigami.PromptDialog {
         id: resizeDialog
         modal: true
         focus: true
         x: (page.width - width) / 2
         y: page.height / 2 - height
         title: i18n("Resize table")
+        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
         Kirigami.FormLayout {
             Controls.SpinBox {
                 id: rowSpin
@@ -91,21 +92,14 @@ Kirigami.ApplicationWindow {
                 value: m_puzzle_handler.colSize
                 editable: true
             }
-            Controls.Button {
-                id: doneButton
-                Layout.fillWidth: true
-                text: i18n("Done")
-                Keys.onEnterPressed: doneButton.clicked()
-                Keys.onReturnPressed: doneButton.clicked()
-                onClicked: {
-                    if (rowSpin.value != m_puzzle_handler.rowSize || colSpin.value != m_puzzle_handler.colSize) {
-                        m_puzzle_handler.setSize(rowSpin.value, colSpin.value)
-                        m_puzzle_handler.newPuzzle()
-                    }
-                    resizeDialog.close()
-                    page.forceActiveFocus()
-                }
+        }
+        onAccepted: {
+            if (rowSpin.value != m_puzzle_handler.rowSize || colSpin.value != m_puzzle_handler.colSize) {
+                m_puzzle_handler.setSize(rowSpin.value, colSpin.value)
+                m_puzzle_handler.newPuzzle()
             }
+            resizeDialog.close()
+            page.forceActiveFocus()
         }
     }
 
@@ -170,7 +164,7 @@ Kirigami.ApplicationWindow {
 
         actions.main: Kirigami.Action {
             text: i18n("New Game")
-            iconName: "list-add"
+            iconName: "document-new-symbolic"
             tooltip: i18n("Start new game")
             onTriggered: {
                 m_puzzle_handler.newPuzzle()
