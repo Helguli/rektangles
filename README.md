@@ -10,11 +10,11 @@ Implementation of a Japanese puzzle game known as shikaku. A game for PinePhone 
 3. The number must be equal to the territory of the rectangle.
 
 ### Controls
-Navigation: arrow keys
-Enter/exit selection mode: Space/Enter
-New game: N
-Resize board: R
-Quit: Q
+- Navigation: arrow keys
+- Enter/exit selection mode: Space/Enter
+- New game: N
+- Resize board: R
+- Quit: Q
 
 ## Screenshots
 
