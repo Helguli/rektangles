@@ -18,14 +18,10 @@ Implementation of a Japanese puzzle game known as shikaku. A game for PinePhone 
 
 ## Screenshots
 
-Unsolved puzzle
-![unsolved](screenshots/rektangles_unsolved.png)
+![unsolved](screenshots/rektangles_unsolved.png "Unsolved puzzle")
 
-Solved puzzle
-![solved](screenshots/rektangles_solved.png)
+![solved](screenshots/rektangles_solved.png "Solved puzzle")
 
-Unsolved puzzle on mobile
-![unsolved](screenshots/rektangles_mobile_unsolved.png)
+![unsolved_mobile](screenshots/rektangles_mobile_unsolved.png "Unsolved puzzle on mobile")
 
-Solved puzzle on mobile
-![solved](screenshots/rektangles_mobile_solved.png)
+![solved_mobile](screenshots/rektangles_mobile_solved.png "Solved puzzle on mobile")
