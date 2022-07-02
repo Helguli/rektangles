@@ -11,8 +11,9 @@
 #include <qqml.h>
 #include "cellgroup.h"
 
+#define signum(x)  ((signbit(x) ?  -1 : 1))
+
 enum mode {normal_mode, select_mode, finished_mode};
-enum direction {none, left, right, up, down};
 
 /**
  * Class that generates and
@@ -87,5 +88,4 @@ private:
     void assignSolvedGroup(int start_row, int start_col, int end_row, int end_col);
     void deleteSolvedGroup(int group_id);
     bool isPuzzleSolved();
-
 };

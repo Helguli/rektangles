@@ -8,8 +8,6 @@
 #include <math.h>
 #include <iostream>
 
-#define signum(x)  ((signbit(x) ?  -1 : 1))
-
 PuzzleHandler::PuzzleHandler()
 {
     srand(time(0));
@@ -91,7 +89,6 @@ void PuzzleHandler::returnPressed()
 void PuzzleHandler::mousePressed(int cell_id)
 {
     switch (m_puzzle_state) {
-
     case normal_mode:
         setSelectedCellId(cell_id);
         enterSelectMode();
