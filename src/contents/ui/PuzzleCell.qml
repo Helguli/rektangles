@@ -11,8 +11,10 @@ import org.kde.rektangles 0.1 as Rektangles
 
 Rectangle {
     id: cell_rect
-    property string value: ""
+    property string value: model.modelData
     radius: 5
+    width: cell_size
+    height: cell_size
     border.width: cell_size / 10
     border.color: "transparent"
     Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -24,6 +26,12 @@ Rectangle {
         font.pointSize: cell_size / 3
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+    }
+    state: {
+        if(m_puzzle_handler.selectedCellId == index)
+            "selected"
+        else
+            ""
     }
     states: [
         State {

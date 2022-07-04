@@ -14,34 +14,18 @@ ColumnLayout {
     id: cica
     Layout.alignment: Qt.AlignCenter
     Layout.margins: 0
-    Grid {
+    GridView {
         id: gametable
-        columns: m_puzzle_handler.colSize
-        rows: m_puzzle_handler.rowSize
-
-        spacing: grid_spacing
+        width: (cell_size + grid_spacing) * m_puzzle_handler.colSize
+        height: (cell_size + grid_spacing) * m_puzzle_handler.rowSize
+        cellWidth: cell_size + grid_spacing
+        cellHeight: cell_size + grid_spacing
+        flow: GridView.FlowLeftToRight
+        layoutDirection: Qt.LeftToRight
+        verticalLayoutDirection: GridView.TopToBottom
         Layout.alignment: Qt.AlignCenter
-        horizontalItemAlignment: Grid.AlignHCenter
-        verticalItemAlignment: Grid.AlignVCenter
-        Repeater {
-            id: cell_repeater
-            model: m_puzzle_handler.puzzleValues;
-            delegate: PuzzleCell {
-                id: cell_rect
-                property int indexOfThis: index
-                border.width: cell_size / 10
-                width: cell_size
-                height: cell_size
-                state: {
-                    if(m_puzzle_handler.selectedCellId == index)
-                        "selected"
-                    else
-                        ""
-                }
-                value: model.modelData
-
-            }
-        }
+        model: m_puzzle_handler.puzzleValues;
+        delegate: PuzzleCell {}
     }
     Item {
         anchors.fill: gametable
@@ -53,31 +37,24 @@ ColumnLayout {
                 color: model.modelData.color
                 group_width: model.modelData.endCol - model.modelData.startCol
                 group_height: model.modelData.endRow - model.modelData.startRow
-                x: cell_repeater.itemAt(model.modelData.startCol).x
-                y: cell_repeater.itemAt(model.modelData.startRow * m_puzzle_handler.colSize).y
+                x: gametable.itemAtIndex(model.modelData.startCol).x
+                y: gametable.itemAtIndex(model.modelData.startRow * m_puzzle_handler.colSize).y
                 width: cell_size + ((cell_size + grid_spacing) * (group_width))
                 height: cell_size + ((cell_size + grid_spacing) * (group_height))
 
             }
         }
-
     }
     MouseArea {
         id: area
         anchors.fill: gametable
-        hoverEnabled: false
+        hoverEnabled: true
         onPressed: {
-            if (gametable.childAt(mouse.x, mouse.y) != null) {
-                m_puzzle_handler.mousePressed(gametable.childAt(mouse.x, mouse.y).indexOfThis)
-            } else {
-                m_puzzle_handler.mousePressed(-1)
-            }
+            m_puzzle_handler.mousePressed(gametable.indexAt(mouse.x, mouse.y))
         }
         onReleased: {m_puzzle_handler.mouseReleased()}
         onPositionChanged: {
-            if (gametable.childAt(mouse.x, mouse.y) != null) {
-                m_puzzle_handler.setSelectedCellId(gametable.childAt(mouse.x, mouse.y).indexOfThis)
-            }
+            m_puzzle_handler.setSelectedCellId(gametable.indexAt(mouse.x, mouse.y))
         }
     }
 }
