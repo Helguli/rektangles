@@ -20,7 +20,7 @@ Rectangle {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     Kirigami.Theme.inherit: false
     color: Kirigami.Theme.backgroundColor
-    Kirigami.Heading{
+    Controls.Label {
         anchors.fill: cell_rect
         text: value
         font.pointSize: cell_size / 3

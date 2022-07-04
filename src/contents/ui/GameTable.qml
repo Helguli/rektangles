@@ -20,12 +20,25 @@ ColumnLayout {
         height: (cell_size + grid_spacing) * m_puzzle_handler.rowSize
         cellWidth: cell_size + grid_spacing
         cellHeight: cell_size + grid_spacing
+        interactive: false
         flow: GridView.FlowLeftToRight
         layoutDirection: Qt.LeftToRight
         verticalLayoutDirection: GridView.TopToBottom
         Layout.alignment: Qt.AlignCenter
         model: m_puzzle_handler.puzzleValues;
         delegate: PuzzleCell {}
+        MouseArea {
+            id: area
+            anchors.fill: gametable
+            hoverEnabled: true
+            onPressed: {
+                m_puzzle_handler.mousePressed(gametable.indexAt(mouse.x, mouse.y))
+            }
+            onReleased: {m_puzzle_handler.mouseReleased()}
+            onPositionChanged: {
+                m_puzzle_handler.setSelectedCellId(gametable.indexAt(mouse.x, mouse.y))
+            }
+        }
     }
     Item {
         anchors.fill: gametable
@@ -43,18 +56,6 @@ ColumnLayout {
                 height: cell_size + ((cell_size + grid_spacing) * (group_height))
 
             }
-        }
-    }
-    MouseArea {
-        id: area
-        anchors.fill: gametable
-        hoverEnabled: true
-        onPressed: {
-            m_puzzle_handler.mousePressed(gametable.indexAt(mouse.x, mouse.y))
-        }
-        onReleased: {m_puzzle_handler.mouseReleased()}
-        onPositionChanged: {
-            m_puzzle_handler.setSelectedCellId(gametable.indexAt(mouse.x, mouse.y))
         }
     }
 }
