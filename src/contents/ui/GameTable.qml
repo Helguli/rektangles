@@ -31,7 +31,7 @@ ColumnLayout {
             id: area
             anchors.fill: gametable
             hoverEnabled: true
-	    preventStealing: true
+            preventStealing: true
             onPressed: {
                 m_puzzle_handler.mousePressed(gametable.indexAt(mouse.x, mouse.y))
             }
